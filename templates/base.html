@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        {% block title %}SmartDB{% endblock %}
+    </title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <style>
+        body {
+
+            margin: 0;
+
+            background: #0f172a;
+
+            color: white;
+
+            font-family: Arial, sans-serif;
+        }
+
+        .sidebar {
+
+            width: 260px;
+
+            height: 100vh;
+
+            position: fixed;
+
+            background: linear-gradient(180deg,
+                    #020617,
+                    #0f172a);
+
+            padding: 30px 20px;
+        }
+
+        .sidebar h1 {
+
+            font-size: 38px;
+
+            margin-bottom: 40px;
+        }
+
+        .sidebar a {
+
+            display: block;
+
+            color: white;
+
+            text-decoration: none;
+
+            padding: 14px 18px;
+
+            margin-bottom: 10px;
+
+            border-radius: 12px;
+
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+
+            background: #2563eb;
+        }
+
+        .main-content {
+
+            margin-left: 260px;
+
+            padding: 30px;
+        }
+
+        .dashboard-card {
+
+            background: rgba(255, 255, 255, 0.08);
+
+            border-radius: 20px;
+
+            padding: 25px;
+
+            backdrop-filter: blur(10px);
+
+            transition: 0.3s;
+        }
+
+        .dashboard-card:hover {
+
+            transform: translateY(-5px);
+        }
+
+        .topbar {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 30px;
+        }
+
+        .profile-box {
+
+            background: rgba(255, 255, 255, 0.08);
+
+            padding: 10px 20px;
+
+            border-radius: 12px;
+        }
+
+        .flash-msg {
+
+            border-radius: 12px;
+        }
+    </style>
+
+</head>
+
+<body id="main-body">
+
+    <!-- SIDEBAR -->
+
+    <div class="sidebar">
+
+        <h1>SmartDB</h1>
+
+        <a href="/">Dashboard</a>
+
+        <a href="/products">Products</a>
+
+        <a href="/orders">Orders</a>
+
+        <a href="/category-analytics">
+            Analytics
+        </a>
+
+        <a href="/settings">Settings</a>
+
+        {% if session.get('role') == 'admin' %}
+
+        <a href="/admin-dashboard">
+            Admin Dashboard
+        </a>
+
+        <a href="/add-product">
+            Add Product
+        </a>
+
+        {% endif %}
+
+        <a href="/logout">Logout</a>
+
+    </div>
+
+    <!-- MAIN CONTENT -->
+
+    <div class="main-content">
+
+        <!-- TOPBAR -->
+
+        <div class="topbar">
+
+            <div>
+
+                <div class="d-flex align-items-center gap-3">
+
+                    <button onclick="history.back()" class="btn btn-outline-light">
+                        ← Back
+                    </button>
+
+                    <div>
+
+                        <h2>
+                            {% block page_title %}
+                            Dashboard
+                            {% endblock %}
+                        </h2>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="profile-box">
+
+                {{ session['user'] }}
+
+            </div>
+
+        </div>
+        <!-- FLASH MESSAGES -->
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+
+        {% if messages %}
+
+        {% for category, message in messages %}
+
+        <div class="alert alert-{{ category }} flash-msg">
+
+            {{ message }}
+
+        </div>
+
+        {% endfor %}
+
+        {% endif %}
+
+        {% endwith %}
+
+        <!-- PAGE CONTENT -->
+
+        {% block content %}
+        {% endblock %}
+
+    </div>
+
+   <script>
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    const body = document.getElementById('main-body');
+
+    const savedTheme = localStorage.getItem('theme');
+
+    // LOAD SAVED THEME
+    if(savedTheme === 'light') {
+
+        body.classList.add('light-mode');
+    }
+
+    // BUTTON EVENT
+    const themeBtn = document.getElementById(
+        'theme-toggle-btn'
+    );
+
+    if(themeBtn) {
+
+        themeBtn.addEventListener('click', () => {
+
+            body.classList.toggle('light-mode');
+
+            // SAVE THEME
+            if(body.classList.contains('light-mode')) {
+
+                localStorage.setItem(
+                    'theme',
+                    'light'
+                );
+
+            } else {
+
+                localStorage.setItem(
+                    'theme',
+                    'dark'
+                );
+            }
+        });
+    }
+
+});
+
+</script>
+</body>
+
+</html>

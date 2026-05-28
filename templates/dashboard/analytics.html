@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Analytics
+{% endblock %}
+
+{% block page_title %}
+Analytics Dashboard
+{% endblock %}
+
+{% block content %}
+
+<div class="row g-4">
+
+    <div class="col-md-4">
+
+        <div class="dashboard-card">
+
+            <h4>Total Products</h4>
+
+            <h1>{{ total_products }}</h1>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-4">
+
+        <div class="dashboard-card">
+
+            <h4>Average Rating</h4>
+
+            <h1>{{ avg_rating }}</h1>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-4">
+
+        <div class="dashboard-card">
+
+            <h4>Total Categories</h4>
+
+            <h1>{{ total_categories }}</h1>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

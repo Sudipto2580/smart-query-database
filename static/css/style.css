@@ -1,0 +1,212 @@
+body{
+    margin:0;
+    padding:0;
+    background:#0f172a;
+    font-family:Arial;
+    color:white;
+}
+
+.sidebar{
+    width:250px;
+    min-height:100vh;
+    background:#111827;
+    position:fixed;
+}
+
+.sidebar h2{
+    color:#60a5fa;
+    text-align:center;
+    margin-top:20px;
+}
+
+.sidebar .nav-link{
+    color:#cbd5e1;
+    padding:15px;
+    border-radius:10px;
+    margin-bottom:10px;
+    transition:0.3s;
+}
+
+.sidebar .nav-link:hover{
+    background:#2563eb;
+    color:white;
+}
+
+.main-content{
+    margin-left:250px;
+    padding:30px;
+}
+
+.dashboard-card{
+    background:#1e293b;
+    border:none;
+    border-radius:20px;
+    color:white;
+    transition:0.3s;
+}
+
+.dashboard-card:hover{
+    transform:translateY(-5px);
+}
+
+.dashboard-card h2{
+    color:#60a5fa;
+    font-weight:bold;
+}
+
+.profile-avatar {
+
+    width: 120px;
+
+    height: 120px;
+
+    border-radius: 50%;
+
+    background: linear-gradient(
+        45deg,
+        #3b82f6,
+        #9333ea
+    );
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 40px;
+
+    font-weight: bold;
+
+    margin: auto;
+
+    margin-bottom: 20px;
+
+    overflow: hidden;
+
+    border: 4px solid rgba(255,255,255,0.2);
+}
+
+.search-card{
+    background:#1e293b;
+    border:none;
+    border-radius:20px;
+}
+
+.form-control,
+.form-select{
+    background:#0f172a;
+    border:1px solid #334155;
+    color:white;
+}
+
+.form-control:focus,
+.form-select:focus{
+    background:#0f172a;
+    color:white;
+}
+
+.table{
+    color:white;
+}
+
+.table thead{
+    background:#1e293b;
+}
+
+.table tbody tr{
+    background:#111827;
+}
+
+.table tbody tr:hover{
+    background:#1e293b;
+}
+
+.btn-primary{
+    background:#2563eb;
+    border:none;
+}
+
+.analytics-card{
+    background:#1e293b;
+    border-radius:20px;
+    padding:20px;
+}
+
+.form-control {
+
+    background: rgba(255,255,255,0.1);
+
+    border: none;
+
+    color: white;
+
+    border-radius: 12px;
+
+    padding: 12px;
+}
+
+.form-control::placeholder {
+
+    color: rgba(255,255,255,0.7);
+}
+
+.form-control:focus {
+
+    background: rgba(255,255,255,0.15);
+
+    color: white;
+
+    box-shadow: none;
+}
+.light-mode {
+
+    background: #f1f5f9 !important;
+
+    color: black !important;
+}
+
+.light-mode .glass-card {
+
+    background: rgba(255,255,255,0.9);
+
+    color: black;
+}
+
+.light-mode {
+
+    background: #f1f5f9 !important;
+
+    color: black !important;
+}
+
+.light-mode .sidebar {
+
+    background: white !important;
+}
+
+.light-mode .sidebar a {
+
+    color: black !important;
+}
+
+.light-mode .dashboard-card {
+
+    background: rgba(255,255,255,0.9) !important;
+
+    color: black !important;
+}
+
+.light-mode .profile-box {
+
+    background: rgba(0,0,0,0.05) !important;
+
+    color: black !important;
+}
+
+.light-mode .form-control {
+
+    background: white !important;
+
+    color: black !important;
+}

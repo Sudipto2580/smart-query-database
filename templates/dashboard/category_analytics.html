@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Category Analytics
+{% endblock %}
+
+{% block page_title %}
+Category Analytics
+{% endblock %}
+
+{% block content %}
+
+<div class="dashboard-card">
+
+    <canvas id="categoryChart"></canvas>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+
+const categoryNames = JSON.parse(
+    '{{ category_names | tojson | safe }}'
+);
+
+const productCounts = JSON.parse(
+    '{{ product_counts | tojson | safe }}'
+);
+
+const ctx = document.getElementById('categoryChart');
+
+new Chart(ctx, {
+
+    type: 'bar',
+
+    data: {
+
+        labels: categoryNames,
+
+        datasets: [{
+
+            label: 'Products Per Category',
+
+            data: productCounts,
+
+            borderWidth: 1
+        }]
+    },
+
+    options: {
+
+        responsive: true,
+
+        scales: {
+
+            y: {
+
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+</script>
+
+{% endblock %}
