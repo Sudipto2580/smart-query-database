@@ -182,7 +182,10 @@ def home():
         db.func.avg(Product.rating)
     ).scalar()
 
-    avg_rating = round(avg_rating, 1)
+    if avg_rating is None:
+        avg_rating = 0
+    else:
+        avg_rating = round(avg_rating, 1)
 
     categories = Category.query.all()
     print(session)
